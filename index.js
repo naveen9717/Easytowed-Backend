@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(
   cors({
-    origin: `https://easytowed-frontend.onrender.com`,
+    origin: `${process.env.NODE_APP_CORS}`,
   })
 );
 app.use(cookieParser());

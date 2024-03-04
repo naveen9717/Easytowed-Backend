@@ -23,6 +23,27 @@ export const getUserById = (req, res) => {
     });
 };
 
+export const getUsers = (req, res) => {
+
+  const q = "SELECT * FROM users";
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0) return res.status(404).json("Users does not exist");
+
+    const token = jwt.sign({ id: data[0].id }, "secretKey");
+
+    const { ...otherData } = data;
+
+    res
+      .cookie("accessToken", token, {
+        httpOnly: true,
+      })
+      .status(200)
+      .json(otherData);
+  });
+};
+
 export const getUserUpdate = (req, res) => {
   // const q = "SELECT * FROM venues WHERE id = ?";
   const emailId=req.body.email;
