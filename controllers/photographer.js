@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const getPhotographerRegister = (req, res) => {
-  const q = "SELECT * FROM photographers WHERE name = ?";
+  const q = "SELECT * FROM photographers WHERE email = ?";
 
   db.query(q, [req.body.email], (err, data) => {
     if (err) return res.status(500).json(err);

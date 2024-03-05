@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const getVenueRegister = (req, res) => {
-  const q = "SELECT * FROM venues WHERE name = ?";
+  const q = "SELECT * FROM venues WHERE email = ?";
 
   db.query(q, [req.body.email], (err, data) => {
     if (err) return res.status(500).json(err);
@@ -13,7 +13,7 @@ export const getVenueRegister = (req, res) => {
     // const hashedPassword = bcrypt.hashSync(req.body.password, salt);
     // const allfiles =  req.body.images.map (x => `"${x}"`).join (', ');
     const q =
-      "INSERT INTO venues (`name`,`email`,`number`,`address`,`business_name`,`about`,`guest_range`,`number_halls`,`indoor_outdoor`,`wedding_price_veg`,`wedding_price_nonveg`,`engagement_price_veg`,`engagement_price_nonveg`,`gallery`,`isActive`) VALUES (?) ";
+      "INSERT INTO venues (`name`,`email`,`number`,`address`,`business_name`,`about`,`guest_range`,`number_halls`,`city`,`locality`,`wedding_price_veg`,`wedding_price_nonveg`,`engagement_price_veg`,`engagement_price_nonveg`,`gallery`,`isActive`) VALUES (?) ";
 
     const values = [
       req.body.name,
@@ -24,7 +24,8 @@ export const getVenueRegister = (req, res) => {
       req.body.about,
       req.body.guest_range,
       req.body.halls,
-      req.body.indoor,
+      req.body.city,
+      req.body.locality,
       req.body.wedding_price_veg,
       req.body.wedding_price_nonveg,
       req.body.engagement_price_veg,
@@ -114,7 +115,7 @@ export const getVenueUpdate = (req, res) => {
     // const salt = bcrypt.genSaltSync(10);
     // const hashedPassword = bcrypt.hashSync(req.body.password, salt);
     // const allfiles =  req.body.images.map (x => `"${x}"`).join (', ');
-    const q ="UPDATE venues SET `name`=?,`email`=?,`number`=?,`address`=?,`business_name`=?,`about`=?,`guest_range`=?,`number_halls`=?,`indoor_outdoor`=?,`wedding_price_veg`=?,`wedding_price_nonveg`=?,`engagement_price_veg`=?,`engagement_price_nonveg`=?,`gallery`=?,`isActive`=? WHERE id=?";
+    const q ="UPDATE venues SET `name`=?,`email`=?,`number`=?,`address`=?,`business_name`=?,`about`=?,`guest_range`=?,`number_halls`=?,`city`=?,`locality`=?,`wedding_price_veg`=?,`wedding_price_nonveg`=?,`engagement_price_veg`=?,`engagement_price_nonveg`=?,`gallery`=?,`isActive`=? WHERE id=?";
 
     const values = [
       req.body.name,
@@ -125,7 +126,8 @@ export const getVenueUpdate = (req, res) => {
       req.body.about,
       req.body.guest_range,
       req.body.halls,
-      req.body.indoor,
+      req.body.city,
+      req.body.locality,
       req.body.wedding_price_veg,
       req.body.wedding_price_nonveg,
       req.body.engagement_price_veg,
