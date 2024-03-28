@@ -4,6 +4,8 @@ import authRoutes from "./routes/auth.js";
 import likeRoutes from "./routes/likes.js";
 import userRoutes from "./routes/users.js";
 import photographerRoutes from "./routes/photographers.js";
+import destinationRoutes from "./routes/destination.js";
+
 import venuesRoutes from "./routes/venues.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -26,6 +28,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/likes", likeRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/photographers", photographerRoutes);
+app.use("/api/destination", destinationRoutes);
+
 app.use("/api/venues", venuesRoutes);
 
 app.listen(process.env.PORT, () => {
