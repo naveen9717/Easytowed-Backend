@@ -13,10 +13,11 @@ export const getVenueRegister = (req, res) => {
     // const hashedPassword = bcrypt.hashSync(req.body.password, salt);
     // const allfiles =  req.body.images.map (x => `"${x}"`).join (', ');
     const q =
-      "INSERT INTO venues (`name`,`email`,`number`,`address`,`business_name`,`about`,`guest_range`,`number_halls`,`city`,`locality`,`wedding_price_veg`,`wedding_price_nonveg`,`engagement_price_veg`,`engagement_price_nonveg`,`gallery`,`isActive`) VALUES (?) ";
+      "INSERT INTO venues (`name`,`type`,`email`,`number`,`address`,`business_name`,`about`,`guest_range`,`number_halls`,`city`,`locality`,`wedding_price_veg`,`wedding_price_nonveg`,`engagement_price_veg`,`engagement_price_nonveg`,`gallery`,`isActive`) VALUES (?) ";
 
     const values = [
       req.body.name,
+      req.body.type,
       req.body.email,
       req.body.phone,
       req.body.address,
@@ -115,10 +116,11 @@ export const getVenueUpdate = (req, res) => {
     // const salt = bcrypt.genSaltSync(10);
     // const hashedPassword = bcrypt.hashSync(req.body.password, salt);
     // const allfiles =  req.body.images.map (x => `"${x}"`).join (', ');
-    const q ="UPDATE venues SET `name`=?,`email`=?,`number`=?,`address`=?,`business_name`=?,`about`=?,`guest_range`=?,`number_halls`=?,`city`=?,`locality`=?,`wedding_price_veg`=?,`wedding_price_nonveg`=?,`engagement_price_veg`=?,`engagement_price_nonveg`=?,`gallery`=?,`isActive`=? WHERE id=?";
+    const q ="UPDATE venues SET `name`=?,`type`=?,`email`=?,`number`=?,`address`=?,`business_name`=?,`about`=?,`guest_range`=?,`number_halls`=?,`city`=?,`locality`=?,`wedding_price_veg`=?,`wedding_price_nonveg`=?,`engagement_price_veg`=?,`engagement_price_nonveg`=?,`gallery`=?,`isActive`=? WHERE id=?";
 
     const values = [
       req.body.name,
+      req.body.type,
       req.body.email,
       req.body.phone,
       req.body.address,
